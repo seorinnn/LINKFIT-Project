@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { usePtDetail } from '@/hooks/usePtDetail';
 import { TrainerPtDetail } from '@/types';
 
+import { ChattingButton } from '../Chat/ChattingButton';
 import {
   StyledCardBody,
-  StyledChatButton,
   StyledNameText,
   StyledProfileImage,
   Wrapper,
@@ -30,7 +30,7 @@ export const UserProfile = () => {
             <StyledProfileImage src={ptDetail.profileImageUrl} alt='프로필' />
             <StyledNameText>{ptDetail.userName} 회원</StyledNameText>
           </Flex>
-          <StyledChatButton>1:1 채팅</StyledChatButton>
+          <ChattingButton opponentId={ptDetail.userId} />
         </StyledCardBody>
       </Card>
     </Wrapper>

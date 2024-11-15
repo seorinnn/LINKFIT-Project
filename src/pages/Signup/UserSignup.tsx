@@ -1,4 +1,4 @@
-import { Button,FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
+import { Button, FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSignup } from '@/hooks/useSignup';
 import { UserSignupFormData } from '@/types';
 
-import { FormWrapper,TitleWrapper, Wrapper } from './UserSignup.styles';
+import {
+  FormWrapper,
+  StyledAddressText,
+  TitleWrapper,
+  Wrapper,
+} from './UserSignup.styles';
 
 export const UserSignupPage = () => {
   const navigate = useNavigate();
@@ -166,7 +171,7 @@ export const UserSignupPage = () => {
             <FormLabel>지역</FormLabel>
 
             <DaumPostcode onComplete={handleAddressComplete} />
-            <Text mb='15px'>주소: {address}</Text>
+            <StyledAddressText>주소: {address}</StyledAddressText>
           </FormControl>
 
           <FormControl id='profileImage'>

@@ -30,7 +30,15 @@ export const fetchAPI = async ({
   });
 
   if (!response.ok) {
-    throw new Error('API 요청 실패');
+    if (response.status === 401) {
+      // 401 에러 처리: 토큰 만료
+      alert('토큰이 만료되었습니다. 재로그인이 필요합니다.');
+      localStorage.removeItem('accessToken');
+      window.location.href = '/login';
+      throw new Error('토큰 만료');
+    } else {
+      throw new Error('API 요청 실패');
+    }
   }
 
   const contentType = response.headers.get('Content-Type');

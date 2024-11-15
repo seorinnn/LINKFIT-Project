@@ -23,3 +23,7 @@ export const CareerBox = styled(Box)`
   justify-content: center;
   margin-bottom: 8px;
 `;
+
+export const StyledGymText = styled(Text)`
+  text-align: center;
+`;

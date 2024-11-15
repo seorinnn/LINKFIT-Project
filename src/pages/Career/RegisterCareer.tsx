@@ -1,5 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box, Icon } from '@chakra-ui/react';
+import { Box, FormControl, Icon } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,6 +33,13 @@ export const RegisterCareer = () => {
   };
 
   const handleCareerSubmit = () => {
+    const hasEmptyField = careers.some((career) => career.career.trim() === '');
+
+    if (hasEmptyField) {
+      alert('비어있는 칸 없이 경력 및 자격사항을 입력해주세요.');
+      return;
+    }
+
     handleUploadCareer(careers);
     navigate(RouterPath.mypage);
   };
@@ -44,11 +51,13 @@ export const RegisterCareer = () => {
 
       {careers.map((career, index) => (
         <Box key={index}>
-          <StyledInput
-            placeholder='경력 및 자격사항을 입력하세요'
-            value={career.career}
-            onChange={(e) => handleCareerChange(index, e.target.value)}
-          />
+          <FormControl>
+            <StyledInput
+              placeholder='경력 및 자격사항을 입력하세요'
+              value={career.career}
+              onChange={(e) => handleCareerChange(index, e.target.value)}
+            />
+          </FormControl>
         </Box>
       ))}
 

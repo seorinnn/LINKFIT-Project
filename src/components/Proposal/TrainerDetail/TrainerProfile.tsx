@@ -1,6 +1,7 @@
 import { Card } from '@chakra-ui/react';
 
 import { useProfile } from '@/hooks/useProfile';
+import { TrainerProfileForUser } from '@/types';
 import { getDisplayGender, Profile } from '@/utils/getDisplayGender';
 
 import {
@@ -16,7 +17,7 @@ interface TrainerProfileProps {
 }
 
 export const TrainerProfile = ({ trainerId }: TrainerProfileProps) => {
-  const profile = useProfile(trainerId);
+  const profile = useProfile<TrainerProfileForUser>(trainerId);
 
   if (!profile) {
     return <p>프로필 정보를 불러오는 중...</p>;

@@ -1,6 +1,7 @@
 import { Card } from '@chakra-ui/react';
 
 import { useProfile } from '@/hooks/useProfile';
+import { TrainerProfile } from '@/types';
 
 import {
   StyledCardBody,
@@ -10,7 +11,7 @@ import {
 } from '../../Home/UserHomeProfile.styles';
 
 export const TrainerMyPageProfile = () => {
-  const profile = useProfile();
+  const profile = useProfile<TrainerProfile>();
 
   if (!profile) {
     return <p>프로필 정보를 불러오는 중...</p>;
