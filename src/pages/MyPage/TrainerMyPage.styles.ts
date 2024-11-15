@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const StyledButton = styled(Button)`
   background-color: ${colors.mainColor};
   color: ${colors.white};
-  margin-top: 24px;
+  margin-top: 12px;
 
   &:hover {
     background-color: #ff467e;

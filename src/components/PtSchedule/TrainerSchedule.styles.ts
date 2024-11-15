@@ -30,7 +30,7 @@ export const FlexWrapper = styled.div`
 
 export const StyledCard = styled(Card)`
   width: 60%;
-  padding: 10px;
+  padding: 10px 30px;
   margin-bottom: 10px;
   border: 1px solid #e0e0e0;
   margin: 0 auto;
@@ -38,6 +38,14 @@ export const StyledCard = styled(Card)`
 
 export const StyledInput = styled(Input)`
   width: 100%;
+`;
+
+export const StyledScheduleText = styled(Text)`
+  min-width: 100px;
+`;
+
+export const StyledCompleteText = styled(Text)`
+  margin-right: 20px;
 `;
 
 export const StyledButton = styled(Button)`

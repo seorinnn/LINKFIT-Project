@@ -40,6 +40,7 @@ export interface TrainerProfile {
   profileImageUrl: string;
   name: string;
   gender: string;
+  gymName: string;
 }
 
 export interface Career {
@@ -60,7 +61,7 @@ export interface CareerResponse {
 export interface Preference {
   sportsId: number;
   gender: string;
-  range: number;
+  range: number | null;
   goal: string;
 }
 
@@ -115,7 +116,7 @@ export interface UserPtDetail {
   trainerId: number;
   trainerName: string;
   gymName: string;
-  count: number;
+  totalCount: number;
   profileImageUrl: string;
   schedules: Schedule[];
 }
@@ -124,6 +125,7 @@ export interface TrainerPtDetail {
   userId: number;
   userName: string;
   profileImageUrl: string;
+  totalCount: number;
   schedules: Schedule[];
 }
 
@@ -131,4 +133,37 @@ export interface Schedule {
   scheduleId: number;
   isCompleted: string;
   date: string;
+}
+
+export interface ChattingList {
+  id: number;
+  memberName: string;
+  memberProfileImageUrl: string;
+  lastMessage?: string;
+  lastSender?: string;
+}
+
+export interface Message {
+  roomId: number;
+  content: string;
+  sender: string;
+  date: string;
+}
+
+export interface Gym {
+  id: number;
+  name: string;
+  location: string;
+}
+
+export interface Review {
+  score: number;
+  content: string;
+}
+
+export interface ReviewResponse {
+  reviewId: number;
+  content: string;
+  createDate: string;
+  score: number;
 }

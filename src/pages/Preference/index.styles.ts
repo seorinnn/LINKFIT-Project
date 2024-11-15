@@ -21,9 +21,21 @@ export const StyledTitleText = styled(Text)`
   margin: 13px 0 20px 8px;
 `;
 
+export const InbodyTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const StyledInbodyText = styled(Text)`
   font-size: 18px;
   font-weight: 500;
+`;
+
+export const StyledInbodyAdditionalText = styled(Text)`
+  font-size: 15px;
+  font-weight: 500;
+  color: #757575;
 `;
 
 export const StyledButton = styled(Button)`

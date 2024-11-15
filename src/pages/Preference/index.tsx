@@ -16,6 +16,8 @@ import { Preference } from '@/types';
 
 import {
   FormWrapper,
+  InbodyTextWrapper,
+  StyledInbodyAdditionalText,
   StyledInbodyText,
   StyledTitleText,
   TitleWrapper,
@@ -29,7 +31,7 @@ export const PreferencePage = () => {
   const [preference, setPreference] = useState<Preference>({
     sportsId: 0,
     gender: '',
-    range: 0,
+    range: null,
     goal: '',
   });
 
@@ -53,6 +55,11 @@ export const PreferencePage = () => {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (preference.range === null || preference.range <= 0) {
+      alert('거리는 1 이상의 양수로 입력해주세요.');
+      return;
+    }
+
     await handleUploadPreference(preference);
     navigate(RouterPath.home);
   };
@@ -64,9 +71,14 @@ export const PreferencePage = () => {
           회원님에게 딱 맞는 트레이너와 연결해 드릴게요.
         </StyledTitleText>
       </TitleWrapper>
-      <StyledInbodyText>
-        인바디 이미지를 새롭게 업데이트하고 싶다면?
-      </StyledInbodyText>
+      <InbodyTextWrapper>
+        <StyledInbodyText>
+          아직 인바디 이미지를 등록하지 않았거나, 새롭게 등록하고 싶다면?
+        </StyledInbodyText>
+        <StyledInbodyAdditionalText>
+          인바디 이미지를 등록하지 않으면 PT 매칭이 불가능해요!
+        </StyledInbodyAdditionalText>
+      </InbodyTextWrapper>
       <RegisterInbodyButton />
       <Divider />
 
@@ -86,13 +98,13 @@ export const PreferencePage = () => {
           </FormControl>
 
           <FormControl id='range' isRequired>
-            <FormLabel>선호하는 최대 거리를 알려주세요.</FormLabel>
+            <FormLabel>선호하는 최대 거리를 알려주세요. 단위: Km</FormLabel>
             <Input
               type='number'
-              placeholder='거리를 숫자로 입력해주세요'
+              placeholder='거리를 숫자로 입력해주세요. ex) 50'
               focusBorderColor='#FF1658'
               mb='10px'
-              value={preference.range}
+              value={preference.range ?? ''}
               onChange={handleInputChange}
             />
           </FormControl>

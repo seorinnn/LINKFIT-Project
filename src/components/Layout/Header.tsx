@@ -7,6 +7,7 @@ import { useLogout } from '@/hooks/useLogout';
 import { RouterPath } from '@/routes/path';
 
 import {
+  IconWrapper,
   Logo,
   StyledButton,
   StyledChatIcon,
@@ -21,7 +22,13 @@ export const Header = () => {
 
   return (
     <Wrapper>
-      <StyledChatIcon />
+      {isAuthenticated && (
+        <IconWrapper>
+          <Link to={RouterPath.chatting}>
+            <StyledChatIcon />
+          </Link>
+        </IconWrapper>
+      )}
       <Link to={RouterPath.home}>
         <Logo src={LogoImage} alt='logo' />
       </Link>

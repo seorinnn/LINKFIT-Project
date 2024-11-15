@@ -9,7 +9,8 @@ export const HEADER_HEIGHT = '54px';
 export const Wrapper = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
   z-index: ${Z_INDEX.header};
   width: 100%;
   max-width: 100vw;
@@ -18,18 +19,24 @@ export const Wrapper = styled.header`
   background: #eee;
 `;
 
+export const IconWrapper = styled.div`
+  position: absolute;
+  left: 16px;
+`;
+
 export const UserWrapper = styled.div`
   display: flex;
   align-items: center;
+  position: absolute;
+  right: 16px;
 `;
 
 export const StyledChatIcon = styled(ChatIcon)`
-  margin-right: 65px;
+  margin-right: 10px;
 `;
 
 export const Logo = styled.img`
   height: 30px;
-  margin: 0 0 0 16px;
 `;
 
 export const StyledLink = styled(Link)`

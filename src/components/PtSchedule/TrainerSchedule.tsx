@@ -12,10 +12,12 @@ import {
   StyledAddButton,
   StyledButton,
   StyledCard,
+  StyledCompleteText,
   StyledDefaultText,
   StyledInput,
 } from './TrainerSchedule.styles';
 import { TitleText, Wrapper } from './TrainerSchedule.styles';
+import { StyledScheduleText } from './UserSchedule.styles';
 
 export const TrainerSchedule = () => {
   const { handleUploadSchedule } = useSchedule();
@@ -44,18 +46,31 @@ export const TrainerSchedule = () => {
 
   return (
     <Wrapper>
-      <TitleText>PT 일정</TitleText>
+      <Flex>
+        <TitleText>PT 일정</TitleText>
+        <StyledScheduleText>
+          ( {ptDetail?.schedules.length} / {ptDetail?.totalCount} )
+        </StyledScheduleText>
+      </Flex>
       <FlexWrapper>
         {ptDetail?.schedules.length === 0 ? (
           <StyledDefaultText>등록된 PT 일정이 없습니다.</StyledDefaultText>
         ) : (
           ptDetail.schedules.map((schedule, index) => (
             <StyledCard key={index}>
-              <Flex justifyContent='space-around'>
-                <Text minWidth='100px'>
-                  {new Date(schedule.date).toLocaleDateString()}
-                </Text>
-                <Text>{schedule.isCompleted ? '완료' : '미완료'}</Text>
+              <Flex justifyContent='space-between'>
+                <StyledScheduleText>
+                  {new Date(schedule.date).toLocaleString('ko-KR', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </StyledScheduleText>
+                <StyledCompleteText>
+                  {schedule.isCompleted ? '완료' : '미완료'}
+                </StyledCompleteText>
               </Flex>
             </StyledCard>
           ))

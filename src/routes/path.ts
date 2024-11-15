@@ -16,4 +16,8 @@ export const RouterPath = {
   trainerDetail: '/trainerDetail/:trainerId',
   userPtSchedule: '/userPtSchedule',
   trainerPtSchedule: '/trainerPtSchedule/:ptId',
+  chatting: '/chats',
+  selectGym: '/selectGym',
+  registerReview: '/registerReview/:trainerId',
+  review: '/review/:trainerId',
 };

@@ -1,4 +1,4 @@
-import { Button, Card, Text } from '@chakra-ui/react';
+import { Button, Card, Flex, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 import { colors } from '@/styles/colors';
@@ -17,6 +17,10 @@ export const TitleText = styled(Text)`
   margin-bottom: 20px;
 `;
 
+export const StyledScheduleText = styled(Text)`
+  margin: 2px 0px 0px 10px;
+`;
+
 export const StyledDefaultText = styled(Text)`
   text-align: center;
 `;
@@ -30,17 +34,29 @@ export const FlexWrapper = styled.div`
 
 export const StyledCard = styled(Card)`
   width: 60%;
-  padding: 10px;
+  padding: 10px 30px;
   margin-bottom: 10px;
   border: 1px solid #e0e0e0;
   margin: 0 auto;
 `;
 
+export const StyledFlex = styled(Flex)`
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5px;
+`;
+
+export const StyledCompleteText = styled(Text)`
+  margin-right: 8px;
+  font-size: 14px;
+`;
+
 export const StyledCompleteButton = styled(Button)`
-  height: 30px;
+  height: 20px;
   background-color: ${colors.mainColor};
   color: ${colors.white};
-  font-size: 14px;
+  font-size: 13px;
+  width: 40px;
 
   &:hover {
     background-color: #ff467e;

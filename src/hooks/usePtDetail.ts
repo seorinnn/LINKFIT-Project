@@ -13,7 +13,7 @@ export const usePtDetail = <T>(ptId?: number) => {
       if (ptId && type === 'trainer') {
         const data = await getTrainerPtDetail(ptId);
         setPtDetail(data);
-      } else {
+      } else if (type === 'user') {
         const data = await getUserPtDetail();
         setPtDetail(data);
       }
@@ -23,8 +23,10 @@ export const usePtDetail = <T>(ptId?: number) => {
   };
 
   useEffect(() => {
-    fetchPtDetail();
-  }, []);
+    if (type) {
+      fetchPtDetail();
+    }
+  }, [type, ptId]);
 
-  return { ptDetail };
+  return { ptDetail, setPtDetail, fetchPtDetail };
 };

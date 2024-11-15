@@ -39,9 +39,13 @@ export const ProposalPage = () => {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (proposalData.totalCount <= 0 || proposalData.price <= 0) {
+      alert('PT 횟수와 가격은 양수만 입력 가능합니다.');
+      return;
+    }
+
     await handleUploadProposal(proposalData);
-    // TODO : 추후 내 제안 기록 페이지로 이동
-    navigate(RouterPath.home);
+    navigate(RouterPath.sentProposal);
   };
 
   return (
@@ -53,7 +57,7 @@ export const ProposalPage = () => {
       <form onSubmit={handleFormSubmit}>
         <FormWrapper>
           <FormControl id='totalCount' isRequired>
-            <FormLabel>제안하실 PT 횟수를 입력해주세요.</FormLabel>
+            <FormLabel>제안하실 PT 횟수를 입력해주세요. ex) 5</FormLabel>
             <Input
               type='number'
               placeholder='숫자를 입력해주세요.'
@@ -65,7 +69,7 @@ export const ProposalPage = () => {
           </FormControl>
 
           <FormControl id='price' isRequired>
-            <FormLabel>제안하실 PT 가격을 입력해주세요.</FormLabel>
+            <FormLabel>제안하실 PT 가격을 입력해주세요. ex) 100000</FormLabel>
             <Input
               type='number'
               placeholder='숫자를 입력해주세요.'
